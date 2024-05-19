@@ -1,0 +1,67 @@
+/* Center the form container on the page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Optional: add a background color */
+}
+
+/* Style the form container with a border and border-radius */
+.form-container {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center; /* Center the heading */
+}
+
+/* Style the heading */
+.form-container h2 {
+    margin-top: 0;
+}
+
+/* Add some spacing to the form elements */
+.container > div {
+    margin-bottom: 10px;
+}
+
+/* Style the form elements with spacing and uniform width */
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+form input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+/* Style the radio button group */
+.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.radio-group label {
+    margin-right: 15px;
+    margin-left: -10px; /* Ensure label is close to the radio button */
+}
