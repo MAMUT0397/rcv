@@ -131,6 +131,30 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+// a;os
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const res = await fetch('./años.json');  // Corrige el nombre del archivo
+        const data = await res.json();
+
+        let añoSelect = document.getElementById('ano');
+        if (Array.isArray(data)) {
+            data.forEach(añosObj => {
+                if (añosObj && añosObj.años) {  // Asegúrate de usar añosObj
+                    let option = document.createElement('option');
+                    option.value = añosObj.años;
+                    option.text = añosObj.años;  // Usa añosObj correctamente
+                    añoSelect.appendChild(option);
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Error al cargar el json', error);
+    }
+});
+
+
+
 
 
 
