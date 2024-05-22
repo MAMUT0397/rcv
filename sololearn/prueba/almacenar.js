@@ -1,77 +1,91 @@
-// datos del clinete
-
 const nombre = document.getElementById("Nombre");
-nombre.addEventListener("change", function (){
-    nombreSelect = nombre.value
-    console.log("nombre:",nombreSelect)
-})
-
-const apellido = document.getElementById("apellido");
-apellido.addEventListener("change", function (){
-    apellidoSelect = apellido.value
-    console.log("apellido:",apellidoSelect)
-})
-
-    const fechaNaci = document.getElementById("fenaci");
-    fechaNaci.addEventListener("change", function () {
-        fenaci = fechaNaci.value
-        console.log("fecha de nacimiento",fenaci)
-    })
-
-    const tipoDocu = document.getElementById("tipo");
-tipoDocu.addEventListener("change", function () {
-   tipoSelect= tipoDocu.value;
+let nombreSelect;
+nombre.addEventListener("change", function () {
+    nombreSelect = nombre.value;
+    console.log("nombre:", nombreSelect);
 });
 
-const numDocu = document.getElementById("Cedula/rif");
+const apellido = document.getElementById("apellido");
+let apellidoSelect;
+apellido.addEventListener("change", function () {
+    apellidoSelect = apellido.value;
+    console.log("apellido:", apellidoSelect);
+});
+
+const fechaNaci = document.getElementById("fenaci");
+let fenaci;
+fechaNaci.addEventListener("change", function () {
+    fenaci = fechaNaci.value;
+    console.log("fecha de nacimiento:", fenaci);
+});
+
+const tipoDocu = document.getElementById("tipo");
+let tipoSelect;
+tipoDocu.addEventListener("change", function () {
+    tipoSelect = tipoDocu.value;
+    console.log("tipo de documento:", tipoSelect);
+});
+
+const numDocu = document.getElementById("cedula_rif"); // Cambiar el ID en el HTML también
+let cedulaRif;
 numDocu.addEventListener("change", function () {
-   cedulaRif= numDocu.value;
-   console.log("cedula/rif",tipoSelect,cedulaRif)
+    cedulaRif = numDocu.value;
+    console.log("cedula/rif:", tipoSelect, cedulaRif);
 });
 
 const numTelf = document.getElementById("ntlf");
+let numerotelefono;
 numTelf.addEventListener("change", function () {
     numerotelefono = numTelf.value;
-    console.log("Numero de telefono",numerotelefono)
-})
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
+    console.log("Numero de telefono:", numerotelefono);
+});
 
 const listaMarca = document.getElementById("marca");
+let marcaSeleccionada;
 listaMarca.addEventListener("change", function () {
     marcaSeleccionada = listaMarca.value;
     console.log("Marca seleccionada:", marcaSeleccionada);
 });
 
-// const datoModelo = document.getElementById("modelo");
-// datoModelo.addEventListener("change",function () {
-//     moodeloSelect = datoModelo.value
-//     console.log("Modelo seleccionado:", moodeloSelect)
-// })
+const datoModelo = document.getElementById("modelo");
+let moodeloSelect;
+datoModelo.addEventListener("change", function () {
+    moodeloSelect = datoModelo.value;
+    console.log("Modelo seleccionado:", moodeloSelect);
+});
 
-let primaDefensaPenal;
-let primaApoVMuerte;
-let primaApoVInvalidez;
-let primaApoVGastosMedicos;
-let primaGastosFunerarios;
+const version = document.getElementById("version");
+let versionSeleccionada;
+version.addEventListener("change", function () {
+    versionSeleccionada = version.value;
+    console.log("Versión seleccionada:", versionSeleccionada);
+});
 
+const tipoVehiculo = document.getElementById("tipo-vehiculo");
+let tipoVehiculoSeleccionado;
+tipoVehiculo.addEventListener("change", function () {
+    tipoVehiculoSeleccionado = tipoVehiculo.value;
+    console.log("Tipo de vehículo:", tipoVehiculoSeleccionado);
+});
 
-// prima exceso
+const ocupantes = document.getElementById("ocupantes");
+let numeroOcupantes;
+ocupantes.addEventListener("change", function () {
+    numeroOcupantes = ocupantes.value;
+    console.log("Número de ocupantes:", numeroOcupantes);
+});
+
+const ano = document.getElementById("ano");
+let anoSeleccionado;
+ano.addEventListener("change", function () {
+    anoSeleccionado = ano.value;
+    console.log("Año seleccionado:", anoSeleccionado);
+});
+
+// Manejo de primas de exceso, defensa penal y APOV
+let primaExceso, primaDefensaPenal, primaApoVMuerte, primaApoVInvalidez, primaApoVGastosMedicos, primaGastosFunerarios;
+document.getElementById('exceso').addEventListener('change', fetchAndLogValue);
+document.getElementById('tipo-vehiculo').addEventListener('input', fetchAndLogValue);
 document.getElementById('exceso').addEventListener('change', fetchAndLogValue);
 document.getElementById('tipo-vehiculo').addEventListener('input', fetchAndLogValue);
 
@@ -107,7 +121,7 @@ function fetchAndLogValue() {
         });
 }
 
-// prima defensa penal
+
 document.getElementById('defensapenal').addEventListener('change', fetchAndLogDefensaPenal);
 
 function fetchAndLogDefensaPenal() {
@@ -125,7 +139,7 @@ function fetchAndLogDefensaPenal() {
 
             if (resultado) {
                 const prima = resultado["PRIMA"];
-                console.log(`Suma Asegurada: ${sumaAsegurada}, Prima: ${prima}`);
+                console.log(`Suma Asegurada: ${sumaAsegurada}, Prima defensa penal : ${prima}`);
                 primaDefensaPenal = prima;
                 console.log('Prima de Defensa Penal almacenada:', primaDefensaPenal);
             } else {
@@ -138,8 +152,6 @@ function fetchAndLogDefensaPenal() {
 }
 
 
-
-// prima apov
 document.getElementById('apov').addEventListener('change', fetchAndLogapov);
 
 function fetchAndLogapov() {
