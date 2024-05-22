@@ -1,0 +1,74 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx-populate/1.21.0/xlsx-populate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+// Recopilación de datos del formulario
+const nombre = document.getElementById("Nombre").value;
+const apellido = document.getElementById("apellido").value;
+const fenaci = document.getElementById("fenaci").value;
+const tipoSelect = document.getElementById("tipo").value;
+const cedulaRif = document.getElementById("cedula_rif").value;
+const numerotelefono = document.getElementById("ntlf").value;
+const marcaSeleccionada = document.getElementById("marca").value;
+const moodeloSelect = document.getElementById("modelo").value;
+const versionSeleccionada = document.getElementById("version").value;
+const tipoVehiculoSeleccionado = document.getElementById("tipo-vehiculo").value;
+const numeroOcupantes = document.getElementById("ocupantes").value;
+const anoSeleccionado = document.getElementById("ano").value;
+const primaExceso = ...; // Asignar el valor obtenido
+const primaDefensaPenal = ...; // Asignar el valor obtenido
+const primaApoVMuerte = ...; // Asignar el valor obtenido
+
+// Función para generar el Excel y luego el PDF
+async function generateExcelAndPdf() {
+    try {
+        const response = await fetch("plantilla.xlsx");
+        const data = await response.arrayBuffer();
+        const workbook = await XlsxPopulate.fromDataAsync(data);
+        const sheet = workbook.sheet(0);
+
+        // Escribir datos en celdas específicas
+        sheet.cell("A1").value(nombre);
+        sheet.cell("B1").value(apellido);
+        sheet.cell("C1").value(fenaci);
+        sheet.cell("D1").value(tipoSelect);
+        sheet.cell("E1").value(cedulaRif);
+        sheet.cell("F1").value(numerotelefono);
+        sheet.cell("G1").value(marcaSeleccionada);
+        sheet.cell("H1").value(moodeloSelect);
+        sheet.cell("I1").value(versionSeleccionada);
+        sheet.cell("J1").value(tipoVehiculoSeleccionado);
+        sheet.cell("K1").value(numeroOcupantes);
+        sheet.cell("L1").value(anoSeleccionado);
+        sheet.cell("M1").value(primaExceso);
+        sheet.cell("N1").value(primaDefensaPenal);
+        sheet.cell("O1").value(primaApoVMuerte);
+
+        // Convertir el archivo Excel a base64
+        const base64 = await workbook.outputAsync("base64");
+
+        // Crear un PDF con jsPDF
+        const { jsPDF } = window.jspdf;
+        const pdfDoc = new jsPDF();
+        pdfDoc.text(10, 10, "Datos del formulario:");
+
+        const formData = { 
+            nombre, apellido, fenaci, tipoSelect, cedulaRif, numerotelefono,
+            marcaSeleccionada, moodeloSelect, versionSeleccionada, tipoVehiculoSeleccionado,
+            numeroOcupantes, anoSeleccionado, primaExceso, primaDefensaPenal, primaApoVMuerte 
+        };
+
+        Object.keys(formData).forEach((key, index) => {
+            pdfDoc.text(10, 20 + (index * 10), `${key}: ${formData[key]}`);
+        });
+
+        // Descargar el PDF
+        pdfDoc.save("Formulario.pdf");
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+// Añadir un botón para ejecutar la función
+const downloadButton = document.createElement("button");
+downloadButton.textContent = "Generar y Descargar PDF";
+downloadButton.onclick = generateExcelAndPdf;
+document.body.appendChild(downloadButton);
