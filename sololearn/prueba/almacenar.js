@@ -1,284 +1,69 @@
-// // Variables globales para almacenar los datos
-// let calculosExceso = [];
-// let calculosDefensaPenal = [];
-// let calculosApov = [];
+// datos del clinete
 
-// // Función para almacenar datos de Exceso
-// function fetchAndLogValue() {
-//     const sumaAsegurada = parseInt(document.getElementById('exceso').value);
-//     const tipoVehiculo = document.getElementById('tipo-vehiculo').value;
+const nombre = document.getElementById("Nombre");
+nombre.addEventListener("change", function (){
+    nombreSelect = nombre.value
+    console.log("nombre:",nombreSelect)
+})
 
-//     if (isNaN(sumaAsegurada) || !tipoVehiculo) {
-//         console.log('Por favor, selecciona una suma asegurada y escribe un tipo de vehículo válido.');
-//         return;
-//     }
+const apellido = document.getElementById("apellido");
+apellido.addEventListener("change", function (){
+    apellidoSelect = apellido.value
+    console.log("apellido:",apellidoSelect)
+})
 
-//     fetch("./tasaexceso.json")
-//         .then(response => response.json())
-//         .then(data => {
-//             const resultado = data.find(item => item["SUMA ASEGURADA "] === sumaAsegurada);
+    const fechaNaci = document.getElementById("fenaci");
+    fechaNaci.addEventListener("change", function () {
+        fenaci = fechaNaci.value
+        console.log("fecha de nacimiento",fenaci)
+    })
 
-//             if (resultado) {
-//                 const valor = resultado[tipoVehiculo];
-//                 if (valor !== undefined) {
-//                     console.log(`Suma Asegurada: ${sumaAsegurada}, Tipo de Vehículo: ${tipoVehiculo}, Valor: ${valor}`);
-//                     calculosExceso.push({ sumaAsegurada, tipoVehiculo, valor });
-//                 } else {
-//                     console.log(`Tipo de vehículo: ${tipoVehiculo} no encontrado en la suma asegurada: ${sumaAsegurada}.`);
-//                 }
-//             } else {
-//                 console.log(`Suma Asegurada: ${sumaAsegurada} no encontrada.`);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error al cargar el JSON:', error);
-//         });
-// }
+    const tipoDocu = document.getElementById("tipo");
+tipoDocu.addEventListener("change", function () {
+   tipoSelect= tipoDocu.value;
+});
 
-// // Función para almacenar datos de Defensa Penal
-// function fetchAndLogDefensaPenal() {
-//     const sumaAsegurada = parseInt(document.getElementById('defensapenal').value);
+const numDocu = document.getElementById("Cedula/rif");
+numDocu.addEventListener("change", function () {
+   cedulaRif= numDocu.value;
+   console.log("cedula/rif",tipoSelect,cedulaRif)
+});
 
-//     if (isNaN(sumaAsegurada)) {
-//         console.log('Por favor, selecciona una suma asegurada válida.');
-//         return;
-//     }
-
-//     fetch('./defensapenal.json')
-//         .then(response => response.json())
-//         .then(data => {
-//             const resultado = data.find(item => item["SUMA ASEGURADA"] === sumaAsegurada);
-
-//             if (resultado) {
-//                 const prima = resultado["PRIMA"];
-//                 console.log(`Suma Asegurada: ${sumaAsegurada}, Prima: ${prima}`);
-//                 calculosDefensaPenal.push({ sumaAsegurada, prima });
-//             } else {
-//                 console.log(`Suma Asegurada: ${sumaAsegurada} no encontrada.`);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error al cargar el JSON:', error);
-//         });
-// }
-
-// // Función para almacenar datos de APOV
-// function fetchAndLogapov() {
-//     const sumaAsegurada = parseInt(document.getElementById('apov').value);
-//     const ocupantes = parseInt(document.getElementById('ocupantes').value);
-
-//     if (isNaN(sumaAsegurada)) {
-//         console.log('Por favor, selecciona una suma asegurada válida.');
-//         return;
-//     }
-
-//     if (isNaN(ocupantes)) {
-//         console.log('Por favor, ingresa un número válido de ocupantes.');
-//         return;
-//     }
-
-//     fetch('./apov.json')
-//         .then(response => response.json())
-//         .then(data => {
-//             const resultado = data.find(item => item["SUMA ASEGURADA"] === sumaAsegurada);
-
-//             if (resultado) {
-//                 const ovMuerte = resultado["O.V MUERTE"] * ocupantes;
-//                 const ovInvalidez = resultado["O.V INVALIDEZ"] * ocupantes;
-//                 const ovGastosMedicos = resultado["O.V GASTOS MÉDICOS"] * ocupantes;
-//                 const gastosFunerarios = resultado["GASTOS FUNERARIOS"] * ocupantes;
-
-//                 console.log(`Suma Asegurada: ${sumaAsegurada}, O.V MUERTE: ${ovMuerte}, O.V INVALIDEZ: ${ovInvalidez}, O.V GASTOS MÉDICOS: ${ovGastosMedicos}, GASTOS FUNERARIOS: ${gastosFunerarios}`);
-//                 calculosApov.push({ sumaAsegurada, ocupantes, ovMuerte, ovInvalidez, ovGastosMedicos, gastosFunerarios });
-//             } else {
-//                 console.log(`Suma Asegurada: ${sumaAsegurada} no encontrada.`);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error al cargar el JSON:', error);
-//         });
-// }
-
-// // Agregar los event listeners
-// document.getElementById('exceso').addEventListener('change', fetchAndLogValue);
-// document.getElementById('tipo-vehiculo').addEventListener('input', fetchAndLogValue);
-// document.getElementById('defensapenal').addEventListener('change', fetchAndLogDefensaPenal);
-// document.getElementById('apov').addEventListener('change', fetchAndLogapov);
-// document.getElementById('ocupantes').addEventListener('input', fetchAndLogapov);
+const numTelf = document.getElementById("ntlf");
+numTelf.addEventListener("change", function () {
+    numerotelefono = numTelf.value;
+    console.log("Numero de telefono",numerotelefono)
+})
 
 
 
-// console.log(calculosApov,calculosExceso,calculosDefensaPenal)
+
+   
 
 
 
 
 
 
-// // Variables globales para almacenar los valores individuales
-// let sumaAseguradaExceso, tipoVehiculoExceso, valorExceso;
-// let sumaAseguradaDefensaPenal, primaDefensaPenal;
-// let sumaAseguradaApov, ocupantesApov, ovMuerteApov, ovInvalidezApov, ovGastosMedicosApov, gastosFunerariosApov;
-
-
-// // Función para almacenar datos de Exceso individualmente
-// function fetchAndLogValue() {
-//     const sumaAsegurada = parseInt(document.getElementById('exceso').value);
-//     const tipoVehiculo = document.getElementById('tipo-vehiculo').value;
-
-//     if (isNaN(sumaAsegurada) || !tipoVehiculo) {
-//         console.log('Por favor, selecciona una suma asegurada y escribe un tipo de vehículo válido.');
-//         return;
-//     }
-
-//     fetch("./tasaexceso.json")
-//         .then(response => response.json())
-//         .then(data => {
-//             const resultado = data.find(item => item["SUMA ASEGURADA "] === sumaAsegurada);
-
-//             if (resultado) {
-//                 const valor = resultado[tipoVehiculo];
-//                 if (valor !== undefined) {
-//                     console.log(`Suma Asegurada: ${sumaAsegurada}, Tipo de Vehículo: ${tipoVehiculo}, Valor: ${valor}`);
-//                     // Almacenar valores en las variables globales
-//                     sumaAseguradaExceso = sumaAsegurada;
-//                     tipoVehiculoExceso = tipoVehiculo;
-//                     valorExceso = valor;
-//                     console.log('Valores de Exceso almacenados:', { sumaAseguradaExceso, tipoVehiculoExceso, valorExceso });
-//                 } else {
-//                     console.log(`Tipo de vehículo: ${tipoVehiculo} no encontrado en la suma asegurada: ${sumaAsegurada}.`);
-//                 }
-//             } else {
-//                 console.log(`Suma Asegurada: ${sumaAsegurada} no encontrada.`);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error al cargar el JSON:', error);
-//         });
-// }
-
-// // Función para almacenar datos de Defensa Penal individualmente
-// function fetchAndLogDefensaPenal() {
-//     const sumaAsegurada = parseInt(document.getElementById('defensapenal').value);
-
-//     if (isNaN(sumaAsegurada)) {
-//         console.log('Por favor, selecciona una suma asegurada válida.');
-//         return;
-//     }
-
-//     fetch('./defensapenal.json')
-//         .then(response => response.json())
-//         .then(data => {
-//             const resultado = data.find(item => item["SUMA ASEGURADA"] === sumaAsegurada);
-
-//             if (resultado) {
-//                 const prima = resultado["PRIMA"];
-//                 console.log(`Suma Asegurada: ${sumaAsegurada}, Prima: ${prima}`);
-//                 // Almacenar valores en las variables globales
-//                 sumaAseguradaDefensaPenal = sumaAsegurada;
-//                 primaDefensaPenal = prima;
-//                 console.log('Valores de Defensa Penal almacenados:', { sumaAseguradaDefensaPenal, primaDefensaPenal });
-//             } else {
-//                 console.log(`Suma Asegurada: ${sumaAsegurada} no encontrada.`);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error al cargar el JSON:', error);
-//         });
-// }
-
-// // Función para almacenar datos de APOV individualmente
-// function fetchAndLogapov() {
-//     const sumaAsegurada = parseInt(document.getElementById('apov').value);
-//     const ocupantes = parseInt(document.getElementById('ocupantes').value);
-
-//     if (isNaN(sumaAsegurada)) {
-//         console.log('Por favor, selecciona una suma asegurada válida.');
-//         return;
-//     }
-
-//     if (isNaN(ocupantes)) {
-//         console.log('Por favor, ingresa un número válido de ocupantes.');
-//         return;
-//     }
-
-//     fetch('./apov.json')
-//         .then(response => response.json())
-//         .then(data => {
-//             const resultado = data.find(item => item["SUMA ASEGURADA"] === sumaAsegurada);
-
-//             if (resultado) {
-//                 const ovMuerte = resultado["O.V MUERTE"] * ocupantes;
-//                 const ovInvalidez = resultado["O.V INVALIDEZ"] * ocupantes;
-//                 const ovGastosMedicos = resultado["O.V GASTOS MÉDICOS"] * ocupantes;
-//                 const gastosFunerarios = resultado["GASTOS FUNERARIOS"] * ocupantes;
-
-//                 console.log(`Suma Asegurada: ${sumaAsegurada}, O.V MUERTE: ${ovMuerte}, O.V INVALIDEZ: ${ovInvalidez}, O.V GASTOS MÉDICOS: ${ovGastosMedicos}, GASTOS FUNERARIOS: ${gastosFunerarios}`);
-//                 // Almacenar valores en las variables globales
-//                 sumaAseguradaApov = sumaAsegurada;
-//                 ocupantesApov = ocupantes;
-//                 ovMuerteApov = ovMuerte;
-//                 ovInvalidezApov = ovInvalidez;
-//                 ovGastosMedicosApov = ovGastosMedicos;
-//                 gastosFunerariosApov = gastosFunerarios;
-//                 console.log('Valores de APOV almacenados:', { sumaAseguradaApov, ocupantesApov, ovMuerteApov, ovInvalidezApov, ovGastosMedicosApov, gastosFunerariosApov });
-//             } else {
-//                 console.log(`Suma Asegurada: ${sumaAsegurada} no encontrada.`);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error al cargar el JSON:', error);
-//         });
-// }
-
-// // Agregar los event listeners
-// document.getElementById('exceso').addEventListener('change', fetchAndLogValue);
-// document.getElementById('tipo-vehiculo').addEventListener('input', fetchAndLogValue);
-// document.getElementById('defensapenal').addEventListener('change', fetchAndLogDefensaPenal);
-// document.getElementById('apov').addEventListener('change', fetchAndLogapov);
-// document.getElementById('ocupantes').addEventListener('input', fetchAndLogapov);
-
-
-// let primaExceso;
-// document.getElementById('exceso').addEventListener('change', fetchAndLogValue);
-// document.getElementById('tipo-vehiculo').addEventListener('input', fetchAndLogValue);
-
-// function fetchAndLogValue() {
-//     const sumaAsegurada = parseInt(document.getElementById('exceso').value);
-//     const tipoVehiculo = document.getElementById('tipo-vehiculo').value;
-
-//     if (isNaN(sumaAsegurada) || !tipoVehiculo) {
-//         console.log('Por favor, selecciona una suma asegurada y escribe un tipo de vehículo válido.');
-//         return;
-//     }
-
-//     fetch("./tasaexceso.json")
-//         .then(response => response.json())
-//         .then(data => {
-//             const resultado = data.find(item => item["SUMA ASEGURADA "] === sumaAsegurada);
-
-//             if (resultado) {
-//                 const valor = resultado[tipoVehiculo];
-//                 if (valor !== undefined) {
-//                     console.log(`Suma Asegurada: ${sumaAsegurada}, Tipo de Vehículo: ${tipoVehiculo}, Valor: ${valor}`);
-//                     // Almacenar el valor de la prima de exceso en la variable global
-//                     primaExceso = valor;
-//                     console.log('Prima de Exceso almacenada:', primaExceso);
-//                 } else {
-//                     console.log(`Tipo de vehículo: ${tipoVehiculo} no encontrado en la suma asegurada: ${sumaAsegurada}.`);
-//                 }
-//             } else {
-//                 console.log(`Suma Asegurada: ${sumaAsegurada} no encontrada.`);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error al cargar el JSON:', error);
-//         });
-// }
 
 
 
-let primaExceso;
+
+
+
+
+const listaMarca = document.getElementById("marca");
+listaMarca.addEventListener("change", function () {
+    marcaSeleccionada = listaMarca.value;
+    console.log("Marca seleccionada:", marcaSeleccionada);
+});
+
+// const datoModelo = document.getElementById("modelo");
+// datoModelo.addEventListener("change",function () {
+//     moodeloSelect = datoModelo.value
+//     console.log("Modelo seleccionado:", moodeloSelect)
+// })
+
 let primaDefensaPenal;
 let primaApoVMuerte;
 let primaApoVInvalidez;
