@@ -192,3 +192,85 @@ function fetchAndLogapov() {
             console.error('Error al cargar el JSON:', error);
         });
 }
+
+
+// document.getElementById('downloadBtn').addEventListener('click', function() {
+//     // Leer el archivo Excel existente
+//     fetch('ruta/a/tu/archivo.xlsx')
+//         .then(response => response.arrayBuffer())
+//         .then(data => {
+//             const workbook = XLSX.read(data, {type: 'array'});
+            
+//             // Selecciona la hoja de trabajo donde quieres escribir los datos
+//             const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+//             // Escribir datos en celdas específicas
+//             worksheet['A1'] = {v: nombreSelect};  // Nombre
+//             worksheet['B1'] = {v: apellidoSelect};  // Apellido
+//             worksheet['C1'] = {v: fenaci};  // Fecha de Nacimiento
+//             worksheet['D1'] = {v: tipoSelect};  // Tipo de documento
+//             worksheet['E1'] = {v: cedulaRif};  // Cédula/RIF
+//             worksheet['F1'] = {v: numerotelefono};  // Número de teléfono
+//             worksheet['G1'] = {v: marcaSeleccionada};  // Marca
+//             worksheet['H1'] = {v: moodeloSelect};  // Modelo
+//             worksheet['I1'] = {v: versionSeleccionada};  // Versión
+//             worksheet['J1'] = {v: tipoVehiculoSeleccionado};  // Tipo de Vehículo
+//             worksheet['K1'] = {v: numeroOcupantes};  // Número de Ocupantes
+//             worksheet['L1'] = {v: anoSeleccionado};  // Año
+//             worksheet['M1'] = {v: primaExceso};  // Prima de Exceso
+//             worksheet['N1'] = {v: primaDefensaPenal};  // Prima de Defensa Penal
+//             worksheet['O1'] = {v: primaApoVMuerte};  // Prima de APOV Muerte
+//             worksheet['P1'] = {v: primaApoVInvalidez};  // Prima de APOV Invalidez
+//             worksheet['Q1'] = {v: primaApoVGastosMedicos};  // Prima de APOV Gastos Médicos
+//             worksheet['R1'] = {v: primaGastosFunerarios};  // Prima de Gastos Funerarios
+
+//             // Escribir los cambios en el libro de trabajo
+//             XLSX.writeFile(workbook, 'DatosActualizados.xlsx');
+//         })
+//         .catch(error => {
+//             console.error('Error al leer el archivo Excel:', error);
+//         });
+// });
+
+
+
+// fetch('template.xlsx') // La plantilla de Excel debe estar en el mismo servidor o en un lugar accesible
+//             .then(response => response.arrayBuffer())
+//             .then(dataBuffer => {
+//                 const workbook = XLSX.read(dataBuffer, { type: 'array' });
+//                 const sheetName = workbook.SheetNames[0]; // Suponiendo que trabajas con la primera hoja
+//                 const worksheet = workbook.Sheets[sheetName];
+
+//                 // Escribir datos en celdas específicas
+//                 worksheet['A1'].v = data.nombre;
+//                 worksheet['B1'].v = data.apellido;
+//                 worksheet['C1'].v = data.fechaNaci;
+//                 worksheet['D1'].v = data.tipoDocu;
+//                 worksheet['E1'].v = data.cedulaRif;
+//                 worksheet['F1'].v = data.numTelf;
+//                 worksheet['G1'].v = data.marca;
+//                 worksheet['H1'].v = data.modelo;
+//                 worksheet['I1'].v = data.version;
+//                 worksheet['J1'].v = data.tipoVehiculo;
+//                 worksheet['K1'].v = data.ocupantes;
+//                 worksheet['L1'].v = data.ano;
+//                 worksheet['M1'].v = data.primaExceso;
+//                 worksheet['N1'].v = data.primaDefensaPenal;
+//                 worksheet['O1'].v = data.primaApoVMuerte;
+//                 worksheet['P1'].v = data.primaApoVInvalidez;
+//                 worksheet['Q1'].v = data.primaApoVGastosMedicos;
+//                 worksheet['R1'].v = data.primaGastosFunerarios;
+
+//                 // Convertir el archivo Excel modificado a un HTML (temporal para crear PDF)
+//                 const excelHTML = XLSX.utils.sheet_to_html(worksheet);
+
+//                 // Convertir el HTML a PDF usando html2canvas y jsPDF
+//                 const { jsPDF } = window.jspdf;
+//                 html2canvas(document.body).then(canvas => {
+//                     const imgData = canvas.toDataURL('image/png');
+//                     const pdf = new jsPDF('p', 'pt', 'a4');
+//                     pdf.addImage(imgData, 'PNG', 0, 0);
+//                     pdf.save('DatosActualizados.pdf');
+//                 });
+//             });
+//     });
