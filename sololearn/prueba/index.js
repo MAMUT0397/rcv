@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('./json/marca.json')
+    fetch('./marca.json')
         .then(response => response.json())
         .then(data => {
             let marcaSelect = document.getElementById('marca');
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('./json/marca-modelo.json')
+    fetch('./marca-modelo.json')
         .then(response => response.json())
         .then(data => {
             let marcaSelect = document.getElementById('marca');
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('./json/marca-modelo-version-tipo.json')
+    fetch('./marca-modelo-version-tipo.json')
         .then(response => response.json())
         .then(data => {
             let marcaSelect = document.getElementById('marca');
@@ -130,6 +130,44 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error fetching the JSON:', error));
 });
 
+
+// años
+// document.addEventListener("DOMContentLoaded", async () =>{
+//     const res  = await fetch('./años.json')  
+//     const dataAños = await res.json()
+//     let añoSelect = document.getElementById('ano');
+//     if (Array.isArray(dataAños)){
+//         dataAños.forEach(anoObj =>{
+//             if(anoObj && anoObj.ano){
+//                 let option = document.createElement('option');
+//                 option.value = anoObj.ano;
+//                 option.text = anoObj.ano;
+//                 añoSelect.appendChild(option);
+//             }
+//         })
+//     }
+// })
+
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const res = await fetch('./años.json'); 
+        const dataAños = await res.json();
+        let añoSelect = document.getElementById('ano');
+
+        if (Array.isArray(dataAños)) {
+            dataAños.forEach(anoObj => {
+                if (anoObj && anoObj.años) {
+                    let option = document.createElement('option');
+                    option.value = anoObj.años;
+                    option.text = anoObj.años;
+                    añoSelect.appendChild(option);
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Error al cargar datos:', error);
+    }
+});
 
 
 

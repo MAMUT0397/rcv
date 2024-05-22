@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <label for="fenaci">Fecha de Nacimiento</label>
-                        <input type="text" placeholder="16/05/204">
+                        <input type="text" id="fenaci" placeholder="16/05/204">
                     </form>  
                 </div>
             
@@ -42,8 +42,8 @@
                     </select>
                     <label for="Cedula/rif">Cedula/RIF:</label>
                     <input type="text" id="Cedula/rif">
-                    <label for="numtelefono">Telefono:</label>
-                    <input type="text" placeholder="0424-1448532">
+                    <label for="ntlf">Telefono:</label>
+                    <input type="text" id="ntlf" placeholder="0424-1448532">
                     <label for="Edad">Edad:</label>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                     <label for="tipo-vehiculo">Tipo Vehículo:</label>
                     <input type="text" id="tipo-vehiculo">
                     <label for="ocupantes">Numero de ocupantes:</label>
-                    <input type="text" id="ocupantes">
+                    <input type="number" id="ocupantes">
                     <label for="ano">Año:</label>
                     <select id="ano">
                         <option value=""></option>
@@ -97,6 +97,7 @@
 
     <script src="./index.js"></script>
     <script src="./exceso.js"></script>
-    <script src="./cotizar.js"></script>
+    <!-- <script src="./cotizar.js"></script> -->
+    <script src="./almacenar.js"></script>
 </body>
 </html>
