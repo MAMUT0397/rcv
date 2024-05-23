@@ -3,12 +3,14 @@
 const nombre = document.getElementById("Nombre");
 nombre.addEventListener("change", function (){
     nombreSelect = nombre.value
+    datosCapturados.push(nombreSelect)
     console.log("nombre:",nombreSelect)
 })
 
 const apellido = document.getElementById("apellido");
 apellido.addEventListener("change", function (){
     apellidoSelect = apellido.value
+    datosCapturados.push(apellidoSelect)
     console.log("apellido:",apellidoSelect)
 })
 
@@ -36,34 +38,20 @@ numTelf.addEventListener("change", function () {
 })
 
 
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
 const listaMarca = document.getElementById("marca");
 listaMarca.addEventListener("change", function () {
     marcaSeleccionada = listaMarca.value;
     console.log("Marca seleccionada:", marcaSeleccionada);
 });
 
-// const datoModelo = document.getElementById("modelo");
-// datoModelo.addEventListener("change",function () {
-//     moodeloSelect = datoModelo.value
-//     console.log("Modelo seleccionado:", moodeloSelect)
-// })
+const datoModelo = document.getElementById("modelo");
+datoModelo.addEventListener("change",function () {
+    moodeloSelect = datoModelo.value
+    console.log("Modelo seleccionado:", moodeloSelect)
+})
 
+
+let primaExceso;
 let primaDefensaPenal;
 let primaApoVMuerte;
 let primaApoVInvalidez;
@@ -95,6 +83,7 @@ function fetchAndLogValue() {
                     console.log(`Suma Asegurada: ${sumaAsegurada}, Tipo de Vehículo: ${tipoVehiculo}, Valor: ${valor}`);
                     primaExceso = valor;
                     console.log('Prima de Exceso almacenada:', primaExceso);
+                  
                 } else {
                     console.log(`Tipo de vehículo: ${tipoVehiculo} no encontrado en la suma asegurada: ${sumaAsegurada}.`);
                 }
@@ -167,6 +156,13 @@ function fetchAndLogapov() {
                 primaApoVGastosMedicos = resultado["O.V GASTOS MÉDICOS"] * ocupantes;
                 primaGastosFunerarios = resultado["GASTOS FUNERARIOS"] * ocupantes;
 
+                datosCapturados.push({
+                    primaApoVMuerte: primaApoVMuerte,
+                    primaApoVInvalidez: primaApoVInvalidez,
+                    primaApoVGastosMedicos: primaApoVGastosMedicos,
+                    primaGastosFunerarios: primaGastosFunerarios
+                });
+
                 console.log(`Suma Asegurada: ${sumaAsegurada}, O.V MUERTE: ${primaApoVMuerte}, O.V INVALIDEZ: ${primaApoVInvalidez}, O.V GASTOS MÉDICOS: ${primaApoVGastosMedicos}, GASTOS FUNERARIOS: ${primaGastosFunerarios}`);
                 console.log('Prima de APOV Muerte almacenada:', primaApoVMuerte);
                 console.log('Prima de APOV Invalidez almacenada:', primaApoVInvalidez);
@@ -180,3 +176,12 @@ function fetchAndLogapov() {
             console.error('Error al cargar el JSON:', error);
         });
 }
+
+
+
+let datosCapturados = [];
+console.log(datosCapturados)
+
+
+const prueba = datosCapturados[2].primaApoVMuerte
+console.log(prueba)
