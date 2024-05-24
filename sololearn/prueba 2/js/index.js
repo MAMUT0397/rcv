@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('./marca-modelo-version-tipo.json')
+    fetch('./datos/marca-modelo-version-tipo.json')
         .then(response => response.json())
         .then(data => {
             let marcaSelect = document.getElementById('marca');

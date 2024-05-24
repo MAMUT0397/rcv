@@ -13,7 +13,7 @@ function fetchAndLogValue() {
         return;
     }
 
-    fetch("./tasaexceso.json")
+    fetch("./datos/tasaexceso.json")
         .then(response => response.json())
         .then(data => {
             // Busca el objeto que tiene la suma asegurada especificada
@@ -46,7 +46,7 @@ function fetchAndLogDefensaPenal() {
         return;
     }
 
-    fetch('./defensapenal.json')
+    fetch('./datos/defensapenal.json')
         .then(response => response.json())
         .then(data => {
             const resultado = data.find(item => item["SUMA ASEGURADA"] === sumaAsegurada);
@@ -82,7 +82,7 @@ function fetchAndLogapov() {
         return;
     }
 
-    fetch('./apov.json')
+    fetch('./datos/apov.json')
         .then(response => response.json())
         .then(data => {
             const resultado = data.find(item => item["SUMA ASEGURADA"] === sumaAsegurada);
