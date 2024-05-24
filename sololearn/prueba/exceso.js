@@ -3,7 +3,7 @@
 
 //suma asegurada de exceso
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('./tasaexceso.json')
+    fetch('./datos/tasaexceso.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.statusText);
@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
             data.forEach(excesoObj => {
-                if (!excesoObj || !excesoObj["SUMA ASEGURADA "]) { // Cambio aquí
+                if (!excesoObj || !excesoObj["SUMA ASEGURADA "]) { 
                     console.error('Error: Formato de objeto incorrecto ', excesoObj);
                     return;
                 }
                 let option = document.createElement('option');
-                option.value = excesoObj["SUMA ASEGURADA "]; // Cambio aquí
-                option.text = excesoObj["SUMA ASEGURADA "]; // Cambio aquí
+                option.value = excesoObj["SUMA ASEGURADA "];
+                option.text = excesoObj["SUMA ASEGURADA "]; 
                 excesoSelect.appendChild(option);
             });
         })
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // suma asegurada defensa penal 
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('./defensapenal.json')
+    fetch('./datos/defensapenal.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.statusText);
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // suma asegurada apov 
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('./apov.json')
+    fetch('./datos/apov.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.statusText);

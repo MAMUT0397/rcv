@@ -183,5 +183,3 @@ let datosCapturados = [];
 console.log(datosCapturados)
 
 
-const prueba = datosCapturados[2].primaApoVMuerte
-console.log(prueba)
