@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: 
-    height: 100vh;
+    height:100vh;
     margin: 0;
     padding-top: 40px; /* Añadir un margen superior */
     background-color: #f0f0f0; /* Color de fondo opcional */

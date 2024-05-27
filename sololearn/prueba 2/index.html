@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="./style.css" type="text/css">
+
 </head>
 <body>
     <div class="main-container">
@@ -91,13 +94,13 @@
                     <label for="apov">APOV</label>
                     <select  id="apov">apov</select>
                 </div>
+               
+                <button id="cotizarCoberturas">Cotizar</button>
             </div>
         </div>
     </div>
 
-    <script src="./js/almacenar.js"></script>
-    <script src="./js/cotizar.js"></script>
-    <!-- <script src="./cotizar.js"></script> -->
     <script src="./js/index.js"></script>
+    <script src="./js/almacenar.js"></script>
 </body>
 </html>
